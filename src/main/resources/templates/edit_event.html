@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+</head>
+<body>
+<h2>Actualizar Evento</h2>
+<form th:action="@{/events/edit/{id}(id=${event.id})}" method="post">
+    <label for="placa">placa del carro</label>
+    <input type="text" id="placa" name="placa" th:value="${event.placa}" required>
+    <br>
+
+    <label for="horaEntrada">Hora de salida:</label>
+    <input type="time" id="horaEntrada" name="horaEntrada" th:value="${event.horaEntrada}" required>
+    <br>
+
+
+
+    <button type="submit">Actualizar Evento</button>
+    <a href="/events">Cancelar</a>
+</form>
+</body>
+</html>
+
+

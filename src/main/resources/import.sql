@@ -1,0 +1,7 @@
+INSERT INTO roles(name) VALUES('USER');
+INSERT INTO roles(name) VALUES('ADMIN');
+
+INSERT INTO cars(car) VALUES('CAMIONETA');
+INSERT INTO cars(car) VALUES('MOTO');
+INSERT INTO cars(car) VALUES('AUTOMOVIL');
+

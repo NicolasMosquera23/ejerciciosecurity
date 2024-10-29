@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos</title>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a th:href="@{/events}">Eventos</a></li>
+    <li><a th:href="@{/events/create}">Crear Evento</a></li>
+    <li>
+      <form th:action="@{/logout}" method="post" style="display: inline;">
+        <button type="submit" class="btn btn-link" style="padding: 0; text-decoration: none;">
+          Logout
+        </button>
+      </form>
+    </li>
+  </ul>
+</nav>
+
+<table>
+  <thead>
+  <tr>
+    <th>Placa</th>
+    <th>Hora de entrada</th>
+    <th>Ubicacion</th>
+    <th>Tipo vehiculo</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="event : ${events}">
+    <td th:text="${event.placa}"></td>
+    <td th:text="${#temporals.format(event.horaEntrada, 'hh:mm a')}"></td>
+    <td th:text="${event.ubicacion}"></td>
+    <td th:text="${event.car.car}"></td>
+    <td>
+      <a th:href="@{/events/edit/{id}(id=${event.id})}">Editar</a>
+      <form th:action="@{/events/delete/{id}(id=${event.id})}" method="post">
+        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este evento?');">Eliminar</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Event</title>
+</head>
+<body>
+<form th:action="@{/events/create}" method="post">
+  <label for="placa">Placa del carro:</label>
+  <input type="text" id="placa" name="placa" required>
+  <br>
+
+  <label for="horaEntrada">Hora de entrada:</label>
+  <input type="time" id="horaEntrada" name="horaEntrada" required>
+  <br>
+
+  <label for="ubicacion">Ubicacion:</label>
+  <input type="text" id="ubicacion" name="ubicacion" required>
+  <br>
+
+  <label for="carId">Tipo de Vehículo:</label>
+  <select id="carId" name="carId" required>
+    <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.car}">
+    </option>
+  </select>
+
+
+
+
+  <button type="submit">Crear Evento</button>
+  <a href="/events">Cancelar</a>
+</form>
+
+</body>
+</html>
